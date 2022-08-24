@@ -1,0 +1,17 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.home
+{
+    background-size: cover;
+    background-position: 80%;
+    height: 99vh;
+    position: relative;
+    /* z-index: -1; */
+}

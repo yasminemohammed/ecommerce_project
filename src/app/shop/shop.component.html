@@ -1,0 +1,125 @@
+<section class="shop_header">
+    <div class="stars"></div>
+    <h5>LET IT BEGIN!</h5>
+    <h1>BLACK FRIDAY</h1>
+    <h5>EXTRA 20% OFF SALE</h5>
+</section>
+
+<section class="shop_container products">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="product_filter ">
+
+                    <h5 class="my-4">Home/Shop</h5>
+                        <select (change)="filterByCat($event)" class="form-select my-5" aria-label="Default select example" place>
+                            <option disabled selected hidden>filter by Category</option>
+                            <option  *ngFor="let cat of catsData" [value]="cat.name">{{cat.name}}</option>
+                          </select>
+
+                    <h6 class="fw-bold">FILTER BY PRICE :</h6>
+                    <div class="filter_input">
+                      <form id="price-range-form">
+                        <label for="min-price" class="form-label">Min price:  </label>
+                        <span id="min-price-txt" class="fw-bold"> $0</span>
+                        <input type="range" class="form-range" min="0" max="999" id="min-price" step="10" value="0" (change)="getMinPrice($event.target)" >
+
+                        <label for="max-price" class="form-label">Max price: </label>
+                        <span id="max-price-txt" class="fw-bold"> $20000</span>
+                        <input type="range" class="form-range" min="1" max="20000" id="max-price" step="10" value="20000" (change)="getMaxPrice($event.target)" >
+                    </form>
+                    </div>
+
+                    <div class="viewed my-3">
+                        <h6 class="fw-bold">RECENTLY VIEWED PRODUCTS</h6>
+                            <div class="item d-flex">
+                                <img class="img-fluid" src="assets/mobile.jpg" alt="">
+                                <div class="item_details mt-3">
+                                    <h6>Mobile Samsounq A53 </h6>
+                                    <h6>$300.00</h6>
+                                </div>
+                            </div>
+                                <hr>
+
+                            <div class="item d-flex">
+                                <img class="img-fluid" src="assets/mobile.jpg" alt="">
+                                <div class="item_details mt-3">
+                                    <h6>Mobile Samsounq A53 </h6>
+                                    <h6>$300.00</h6>
+                                </div>
+                            </div>
+                                <hr>
+                    </div>
+
+                    <div class="video">
+                        <h5 class="my-3">SEE OUR PRODUCT</h5>
+                        <video src=""></video>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row my-3">
+
+                    <div class="col-md-8">
+                        <div class="input-group-append">
+                        <input type="text" placeholder="Search about.. " [(ngModel)]='term' class="form-control bg-transparent" name="" id="search_input">
+                            <button class="btn btn-dark" id="search_icon" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            </div>
+                    </div>
+
+
+                </div>
+
+            
+
+                    <div class="row">
+
+                        <div *ngFor="let item of displayProducts|search:term|catFilter:catType|existedItems:cartItems" class="col-md-4">
+                            <div  class="productBox" >
+                                <div class="product_img">
+                                    <div [routerLink]="['/productdetails', item.id, item.categories?.id]" class="product_img_layer"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                    <img class="img-fluid w-100" [src]="item.image"  alt="">
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="stars mt-1" >
+                                    </div>
+                                </div>
+                                <h5 class="name ">{{item.name}} </h5>
+                                <h5>{{item.rating}}</h5>
+
+                                <h6 class="price">{{item.price}}$</h6>
+                                <a id="addLinkBtn_{{item.id}}" class="img_head " ><button id="addItemBtn_{{item.id}}" class="btn btn-dark   " (click)="addItemToCart(item.id)">Add To Cart</button></a>
+                                <!-- <a *ngIf="isAdded" class="img_head " ><button disabled class="btn btn-outline-dark">Add To Cart</button></a> -->
+                            </div>
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                            <li class="page-item " [ngClass]="{'disabled': currentPage <= 1}"   (click)="prevPagination()" ><a  class="page-link" >Prev</a></li>
+
+                            <li *ngFor="let item of page_items" class="page-item" (click)="getByPage(item.label)" [ngClass]="{'active': item.label == currentPage}" >
+                                <a class="page-link" >{{item.label}} </a>
+                            </li>
+
+                            <li class="page-item" (click)="nextPagination()" [ngClass]="{'disabled': currentPage >= lastPage}">
+                                <a class="page-link" >Next</a>
+                            </li>
+                            </ul>
+                        </nav>
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+
+</section>

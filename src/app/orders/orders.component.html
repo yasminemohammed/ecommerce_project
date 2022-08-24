@@ -1,0 +1,39 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">user_id</th>
+      <th scope="col">billing_email</th>
+      <th scope="col">billing_name</th>
+      <th scope="col">billing_address</th>
+      <th scope="col">billing_city</th>
+      <th scope="col">billing_phone</th>
+      <th scope="col">billing_name_on_card</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of orders">
+      <th scope="row"></th>
+      <td>{{item.id}}</td>
+      <td>{{item.user_id}}</td>
+      <td>{{item.billing_email}}</td>
+      <td>{{item.billing_name}}</td>
+      <td>{{item.billing_address}}</td>
+      <td>{{item.billing_city}}</td>
+      <td>{{item.billing_phone}}</td>
+      <td>{{item.billing_name_on_card}}</td>
+
+    </tr>
+
+  </tbody>
+</table>

@@ -1,0 +1,94 @@
+<br>
+<br>
+<br>
+<section id="contact-us" class="contact-us section">
+  <div class="container mx-auto">
+    <div class="contact-head">
+      <div class="row">
+        <div class="col-lg-8 col-12">
+          <div class="form-main">
+            <div class="title">
+              <h4>Get in touch</h4>
+              <h3>Write us a message</h3>
+            </div>
+            <form class="form">
+              <div class="row">
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label>Your Name<span>*</span></label>
+                    <input name="name" #name ng-control="name" required id="name" type="text" placeholder="Your Name">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label>Your Subjects<span>*</span></label>
+                    <input name="subject" #subject ng-control="subject" required id="subject" type="text" placeholder="Subject">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label for="email">Your Email<span>*</span></label>
+                    <input type="email" #email ng-control="email" required id="email" placeholder="example@gmail.com"  name="email">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label>Your Phone<span>*</span></label>
+                    <input name="phoneNo" #phoneNo ng-control="phoneNo" required id="phoneNo" type="tel" placeholder="Ex - +91 9999900000">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group message">
+                    <label>your message<span>*</span></label>
+                    <textarea name="message" #message ng-control="message" required id="message" placeholder="Your message goes here"></textarea>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group button">
+                    <button type="submit" class="btn" (click)="sendEmail(
+                                            name.value,
+                                            email.value,
+                                            phoneNo.valueAsNumber,
+                                            subject.value,
+                                            message.value
+                                            )">Send Message</button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="single-head">
+            <div class="single-info">
+              <i class="fa fa-phone"></i>
+              <h4 class="title">Call us Now:</h4>
+              <ul>
+                <li>+91 9041176818</li>
+                <li>+522 672-452-1120</li>
+              </ul>
+            </div>
+            <div class="single-info">
+              <i class="fa fa-envelope-open"></i>
+              <h4 class="title">Email:</h4>
+              <ul>
+                <li><a href="shop@gmail.com">shop@gmail.com</a></li>
+                <li><a href="shop@hotmail.com">shop@hotmail.com</a></li>
+              </ul>
+            </div>
+            <div class="single-info">
+              <i class="fa fa-location-arrow"></i>
+              <h4 class="title">Our Address:</h4>
+              <ul>
+                <li>KA-62/1, , 45 Grand Central Terminal, New Delhi.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
