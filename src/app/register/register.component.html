@@ -2,7 +2,7 @@
   <div class="card card-container">
     <img
       id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      src="../../assets/user.png"
       class="profile-img-card"
     />
     <form
@@ -30,6 +30,7 @@
           <div *ngIf="name.errors['minlength']">
             Username must be at least 3 characters
           </div>
+
           <div *ngIf="name.errors['maxlength']">
             Username must be at most 20 characters
           </div>
@@ -38,9 +39,12 @@
       <div class="form-group">
         <label for="email">Email</label>
         <input
-          type="email"
+        type="email"
+        minlength="10"
+        maxlength="30"
           class="form-control"
           name="email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
           [(ngModel)]="form.email"
           required
           email
@@ -52,6 +56,14 @@
           <div *ngIf="email.errors['email']">
             Email must be a valid email address
           </div>
+          <div *ngIf="email.errors['pattern']"> Email is Not valid!</div>
+          <div *ngIf="email.errors['minlength']">
+            email must be at least 10 characters
+          </div>
+          <div *ngIf="email.errors['maxlength']">
+            email must be at least 30 characters
+          </div>
+
         </div>
       </div>
       <div class="form-group">
@@ -63,6 +75,8 @@
           [(ngModel)]="form.password"
           required
           minlength="6"
+          maxlength="12"
+
           #password="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
         />
@@ -70,6 +84,9 @@
           <div *ngIf="password.errors['required']">Password is required</div>
           <div *ngIf="password.errors['minlength']">
             Password must be at least 6 characters
+          </div>
+          <div *ngIf="password.errors['maxlength']">
+            Password must be only 12 characters
           </div>
         </div>
       </div>
@@ -99,6 +116,6 @@
 
     </form>
 
-   
+
   </div>
 </div>

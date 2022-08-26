@@ -18,34 +18,53 @@
                     <label>Your Name<span>*</span></label>
                     <input type="text" class="form-control" id="name"
                     required maxlength="30" minlength="2"
-                    ngModel name="name" #name="ngModel">
+                    ngModel name="name" #name="ngModel" placeholder="Name">
                     <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                    class="alert alert-danger">
+                    class="alert alert-danger mt-2"> your name is invalid
                  </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Subjects<span>*</span></label>
-                    <input name="subject" #subject ng-control="subject" required id="subject" type="text" placeholder="Subject">
+                    <input name="subject" #subject ng-control="subject"  required maxlength="50"
+                    minlength="5" class="form-control" required id="subject" type="text"
+                    ngModel name="subject" placeholder="Subject" #name="ngModel">
+                    <div *ngIf="subject.oninvalid && subject.required"
+                    class="alert alert-danger">
+                 </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label for="email">Your Email<span>*</span></label>
-                    <input type="email" #email ng-control="email" required id="email" placeholder="example@gmail.com"  name="email">
+                    <input type="email" #email ng-control="email" required id="email"
+                    required maxlength="50"  minlength="10" class="form-control" placeholder="example@gmail.com"
+                      name="email" >
+                      <div *ngIf="email.oninvalid && email.required"
+                      class="alert alert-danger">
+                   </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Phone<span>*</span></label>
-                    <input name="phoneNo" #phoneNo ng-control="phoneNo" required id="phoneNo" type="tel" placeholder="Ex - +91 9999900000">
+                    <input name="phoneNo" #phoneNo ng-control="phoneNo" required id="phoneNo" type="tel"
+                    required maxlength="11"  minlength="11" class="form-control" placeholder="Ex : 01044444444">
+                    <div *ngIf="phoneNo.oninvalid && phoneNo.required "
+                      class="alert alert-danger">
+                   </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group message">
                     <label>your message<span>*</span></label>
-                    <textarea name="message" #message ng-control="message" required id="message" placeholder="Your message goes here"></textarea>
+                    <textarea name="message" #message ng-control="message" required id="message"
+                    required maxlength="300"  minlength="10" class="form-control" placeholder="Your message goes here">
+                </textarea>
+                <div *ngIf="message.oninvalid && message.required"
+                class="alert alert-danger">
+             </div>
                   </div>
                 </div>
                 <div class="col-12">

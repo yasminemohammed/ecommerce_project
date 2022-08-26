@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./contactus.component.css']
 })
 export class ContactusComponent implements OnInit {
-
+  isSuccessful = false;
   user: user = new user();
   data: any;
   email: string | undefined;
@@ -28,6 +28,7 @@ export class ContactusComponent implements OnInit {
     this.user.phoneNo = phoneNo;
     this.user.subject = subject;
     this.user.message = message;
+    this.isSuccessful = true;
     this.contactService.sendEmail(this.user).subscribe( data => {this.data = data; });
     if(Response)
     {
