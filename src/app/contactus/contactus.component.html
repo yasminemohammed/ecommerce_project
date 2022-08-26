@@ -11,60 +11,92 @@
               <h4>Get in touch</h4>
               <h3>Write us a message</h3>
             </div>
-            <form class="form">
+            <form class="form"
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid"
+            #f="ngForm"
+            novalidate>
               <div class="row">
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Name<span>*</span></label>
                     <input type="text" class="form-control" id="name"
-                    required maxlength="30" minlength="2"
+                     maxlength="30" minlength="2"
+                    [ngClass]="{ 'is-invalid': f.submitted && name.errors }"
                     ngModel name="name" #name="ngModel" placeholder="Name">
-                    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                    <div *ngIf="(name.touched)"
+                    class="alert alert-danger mt-2"> your name is required
+                 </div>
+                 <div *ngIf="(name.invalid)"
                     class="alert alert-danger mt-2"> your name is invalid
                  </div>
+
+
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Subjects<span>*</span></label>
-                    <input name="subject" #subject ng-control="subject"  required maxlength="50"
-                    minlength="5" class="form-control" required id="subject" type="text"
-                    ngModel name="subject" placeholder="Subject" #name="ngModel">
-                    <div *ngIf="subject.oninvalid && subject.required"
-                    class="alert alert-danger">
+                    <input name="subject"  #subject="ngModel" ng-control="subject"
+                    [ngClass]="{ 'is-invalid': f.submitted && subject.errors }"
+                     maxlength="50"
+                    minlength="5" class="form-control"  id="subject" type="text"
+                    ngModel name="subject" placeholder="Subject">
+                    <div *ngIf="(subject.touched)"
+                    class="alert alert-danger mt-2"> your subject is required
+                 </div>
+                 <div *ngIf="(subject.invalid)"
+                    class="alert alert-danger mt-2"> your subject is invalid
                  </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
-                    <label for="email">Your Email<span>*</span></label>
-                    <input type="email" #email ng-control="email" required id="email"
-                    required maxlength="50"  minlength="10" class="form-control" placeholder="example@gmail.com"
-                      name="email" >
-                      <div *ngIf="email.oninvalid && email.required"
-                      class="alert alert-danger">
+                    <label for="email">Your email<span>*</span></label>
+                    <input type="email" ngModel #email="ngModel" ng-control="email"  id="email"
+                     maxlength="50"  minlength="10" class="form-control" placeholder="example@gmail.com"
+                      name="email"
+                      [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+                      >
+                      <div *ngIf="(email.touched)"
+                      class="alert alert-danger mt-2"> your email is required
                    </div>
+                   <div *ngIf="(email.invalid)"
+                   class="alert alert-danger mt-2"> your email is invalid
+                </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Phone<span>*</span></label>
-                    <input name="phoneNo" #phoneNo ng-control="phoneNo" required id="phoneNo" type="tel"
-                    required maxlength="11"  minlength="11" class="form-control" placeholder="Ex : 01044444444">
-                    <div *ngIf="phoneNo.oninvalid && phoneNo.required "
-                      class="alert alert-danger">
-                   </div>
+                    <input name="phoneNo" ngModel #phoneNo="ngModel" ng-control="phoneNo"  id="phoneNo" type="tel"
+                     maxlength="11" minlength="11" class="form-control"
+                    placeholder="Ex : 01044444444"
+                    [ngClass]="{ 'is-invalid': f.submitted && phoneNo.errors }"
+                    >
+                    <div *ngIf="(phoneNo.touched)"
+                    class="alert alert-danger mt-2"> your phoneNo is required
+                 </div>
+                 <div *ngIf="(phoneNo.invalid)"
+                 class="alert alert-danger mt-2"> your phoneNo is invalid
+              </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group message">
                     <label>your message<span>*</span></label>
-                    <textarea name="message" #message ng-control="message" required id="message"
-                    required maxlength="300"  minlength="10" class="form-control" placeholder="Your message goes here">
-                </textarea>
-                <div *ngIf="message.oninvalid && message.required"
-                class="alert alert-danger">
+                    <textarea name="message" ngModel #message="ngModel" ng-control="message"  id="message"
+                     maxlength="300"  minlength="10" class="form-control" placeholder="Your message goes here">
+                    [ngClass]="{ 'is-invalid': f.submitted && message.errors }"
+
+                  </textarea>
+                <div *ngIf="(message.touched)"
+                class="alert alert-danger mt-2"> your message is required
              </div>
+             <div *ngIf="(message.invalid)"
+                    class="alert alert-danger mt-2"> your message is invalid
+                 </div>
                   </div>
                 </div>
                 <div class="col-12">
@@ -72,7 +104,7 @@
                     <button type="submit" class="btn" (click)="sendEmail(
                                             name.value,
                                             email.value,
-                                            phoneNo.valueAsNumber,
+                                            phoneNo.value,
                                             subject.value,
                                             message.value
                                             )">Send Message</button>
@@ -114,5 +146,4 @@
     </div>
   </div>
 </section>
-
 
