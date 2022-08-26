@@ -56,14 +56,15 @@
                     <label for="email">Your email<span>*</span></label>
                     <input type="email" ngModel #email="ngModel" ng-control="email"  id="email"
                      maxlength="50"  minlength="10" class="form-control" placeholder="example@gmail.com"
-                      name="email"
+                     pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                     name="email"
                       [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
                       >
                       <div *ngIf="(email.touched)"
-                      class="alert alert-danger mt-2"> your email is required
+                      class="alert alert-danger mt-1"> your email is required
                    </div>
                    <div *ngIf="(email.invalid)"
-                   class="alert alert-danger mt-2"> your email is invalid
+                   class="alert alert-danger mt-1"> your email is invalid
                 </div>
                   </div>
                 </div>
