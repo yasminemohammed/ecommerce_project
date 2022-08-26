@@ -16,7 +16,12 @@
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Name<span>*</span></label>
-                    <input name="name" #name ng-control="name" required id="name" type="text" placeholder="Your Name">
+                    <input type="text" class="form-control" id="name"
+                    required maxlength="30" minlength="2"
+                    ngModel name="name" #name="ngModel">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                    class="alert alert-danger">
+                 </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">

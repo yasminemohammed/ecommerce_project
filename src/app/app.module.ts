@@ -33,6 +33,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { PaymentComponent } from './payment/payment.component';
 import { AuthInterceptor } from './_helpers/auth.interceptor';
 import { ContactusComponent } from './contactus/contactus.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 // import { CheckOutComponent } from './checkout/checkout.component';
 
@@ -62,6 +63,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     ReviewsComponent,
     PaymentComponent,
     ContactusComponent,
+    CheckOutComponent,
     // CheckOutComponent
 
   ],

@@ -74,11 +74,11 @@
 
                 </div>
 
-            
+
 
                     <div class="row">
 
-                        <div *ngFor="let item of displayProducts|search:term|catFilter:catType|existedItems:cartItems" class="col-md-4">
+                        <div *ngFor="let item of displayProducts|search:term|catFilter:catType|existedItems:cartItems" class="col-md-6 hei">
                             <div  class="productBox" >
                                 <div class="product_img">
                                     <div [routerLink]="['/productdetails', item.id, item.categories?.id]" class="product_img_layer"><i class="fa-solid fa-magnifying-glass"></i></div>

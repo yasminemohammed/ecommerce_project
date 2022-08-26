@@ -32,9 +32,7 @@ export class ContactusComponent implements OnInit {
     if(Response)
     {
       console.log("We will contact you soon , thank you");
-      this.toastr.success("We will contact you soon , thank you")
-
-
+      this.toastr.success("We will contact you soon , thank you");
     }
     else{
       console.log("noooooooooo");

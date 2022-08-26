@@ -39,7 +39,7 @@ export class CartService {
         this.getCartData().subscribe((resp)=>
         {
           this.cartData.next(resp.data);
-          console.log(this.cartData.value)
+          console.log(resp.data)
           this.cartItemsLength.next(resp.data.length);
           this.getCartTotal()
 
@@ -50,7 +50,7 @@ export class CartService {
       }
 
   }
-    addToCart(id:any):Observable<any>
+    addToCart(id: number):Observable<any>
     {
       $('.fa-bag-shopping').addClass('fa-bounce');
     let productData =

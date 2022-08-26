@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h4><strong>Enter Your Shipping Details</strong></h4>
+  </div>
+
+<div class="col-md-8 order-md-1">
+  <h4 class="mb-3">Billing address</h4>
+
+  <form [formGroup]="myForm" (ngSubmit)=" !checkoutform.invalid && onSubmit()" #checkoutform="ngForm">
+
+    <div class="form-group">
+      <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="email" class="control-label required">email <span style="color: darkred">*</span></label>
+        <input type="email" id="email" class="form-control" formControlName="email" name="email">
+        <div *ngIf="myForm.controls['email'].errors &&  myForm.controls['email'].touched" class="alert alert-danger mt-3" role="alert">
+          <p *ngIf="myForm.controls['email'].errors?.required">Email field is required</p>
+          <p *ngIf="myForm.controls['email'].errors?.email">Email is not valid</p>
+          <p *ngIf="myForm.controls['email'].errors?.pattern">Email is not valid</p>
+          <p *ngIf="myForm.controls['email'].errors?.maxlength">max number of characters 25 </p>
+          <p *ngIf="myForm.controls['email'].errors?.minlength">Email must be at least 10 characters </p>
+      </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="name" class="control-label required">name <span style="color: darkred">*</span></label>
+        <input type="text" id="name" class="form-control" formControlName="name" name="name">
+        <div *ngIf="myForm.controls['name'].errors &&  myForm.controls['name'].touched" class="alert alert-danger mt-3" role="alert">
+          <p *ngIf="myForm.controls['name'].errors?.required">name field is required</p>
+          <p *ngIf="myForm.controls['name'].errors?.pattern">name is not valid</p>
+          <p *ngIf="myForm.controls['name'].errors?.maxlength">max number of characters 20 </p>
+          <p *ngIf="myForm.controls['name'].errors?.minlength">Email must be at least 6 characters </p>
+      </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="address" class="control-label required">address <span style="color: darkred">*</span></label>
+        <input type="text" id="address" class="form-control" formControlName="address">
+        <div *ngIf="myForm.controls['address'].errors &&  myForm.controls['address'].touched" class="alert alert-danger mt-3" role="alert">
+          <p *ngIf="myForm.controls['address'].errors?.required">address field is required</p>
+          <p *ngIf="myForm.controls['address'].errors?.pattern">address is not valid</p>
+          <p *ngIf="myForm.controls['address'].errors?.maxlength">max number of characters 50 </p>
+          <p *ngIf="myForm.controls['address'].errors?.minlength">address must be at least 10 characters </p>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="city" class="control-label required">city<span style="color: darkred">*</span></label>
+        <input type="text" id="city" class="form-control"  formControlName="city" name="city">
+        <div *ngIf="myForm.controls['city'].errors &&  myForm.controls['city'].touched" class="alert alert-danger mt-3" role="alert">
+          <p *ngIf="myForm.controls['city'].errors?.required">city field is required</p>
+          <p *ngIf="myForm.controls['city'].errors?.pattern">city is not valid</p>
+          <p *ngIf="myForm.controls['city'].errors?.maxlength">max number of characters 10 </p>
+          <p *ngIf="myForm.controls['city'].errors?.minlength">city must be at least 6 characters </p>
+      </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="province" class="control-label required">province <span
+          style="color: darkred">*</span></label>
+        <input type="text" id="province" class="form-control"
+               formControlName="province">
+               <div *ngIf="myForm.controls['province'].errors &&  myForm.controls['province'].touched" class="alert alert-danger mt-3" role="alert">
+                <p *ngIf="myForm.controls['province'].errors?.required">province field is required</p>
+                <p *ngIf="myForm.controls['province'].errors?.pattern">province is not valid</p>
+                <p *ngIf="myForm.controls['province'].errors?.maxlength">max number of characters 10 </p>
+                <p *ngIf="myForm.controls['province'].errors?.minlength">province must be at least 6 characters </p>
+            </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="postalCode" class="control-label required">postalCode <span
+          style="color: darkred">*</span></label>
+        <input type="text" id="postalCode" class="form-control"
+               formControlName="postalCode">
+               <div *ngIf="myForm.controls['postalCode'].errors &&  myForm.controls['postalCode'].touched" class="alert alert-danger mt-3" role="alert">
+                <p *ngIf="myForm.controls['postalCode'].errors?.required">postalCode field is required</p>
+                <p *ngIf="myForm.controls['postalCode'].errors?.pattern">postalCode is not valid</p>
+                </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="phone" class="control-label required">phone <span
+          style="color: darkred">*</span></label>
+        <input type="text" id="phone" class="form-control"
+               formControlName="phone">
+               <div *ngIf="myForm.controls['phone'].errors &&  myForm.controls['phone'].touched" class="alert alert-danger mt-3" role="alert">
+                <p *ngIf="myForm.controls['phone'].errors?.required">phone field is required</p>
+                <p *ngIf="myForm.controls['phone'].errors?.pattern">phone is not valid</p>
+                <p *ngIf="myForm.controls['phone'].errors?.maxlength">max number of characters 11 </p>
+                <p *ngIf="myForm.controls['phone'].errors?.minlength">phone must be at least 11 characters </p>
+            </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="nameOnCard" class="control-label required">nameOnCard <span
+          style="color: darkred">*</span></label>
+        <input type="text" id="nameOnCard" class="form-control"
+               formControlName="nameOnCard">
+               <div *ngIf="myForm.controls['nameOnCard'].errors &&  myForm.controls['nameOnCard'].touched" class="alert alert-danger mt-3" role="alert">
+                <p *ngIf="myForm.controls['nameOnCard'].errors?.required">nameOnCard field is required</p>
+                <p *ngIf="myForm.controls['nameOnCard'].errors?.pattern">nameOnCard is not valid</p>
+                <p *ngIf="myForm.controls['nameOnCard'].errors?.maxlength">max number of characters 20 </p>
+                <p *ngIf="myForm.controls['nameOnCard'].errors?.minlength">nameOnCard must be at least 6 characters </p>
+            </div>
+
+      </div>
+    </div>
+
+
+
+
+    <hr class="mb-4">
+    <button class="btn btn-primary btn-lg btn-block mb-5" type="submit">Proceed to Payment</button>
+  </form>
+</div>
+</div>

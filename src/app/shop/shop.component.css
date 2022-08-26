@@ -3,6 +3,12 @@
     position: relative;
     /* background-color: tomato; */
 }
+.hei{
+  height: auto;
+}
+.name{
+  height: 70px;
+}
 #search_icon
 {
     position: absolute;
