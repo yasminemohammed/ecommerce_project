@@ -1,0 +1,90 @@
+<br>
+<br>
+<br>
+<br>
+<section class="product_header">
+  <div class="container">
+      <h2>My Oders</h2>
+      <p>orders / Order Details</p>
+  </div>
+</section>
+
+
+<section class="100hv" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card border-top border-bottom border-3" style="border-color: #f37a27 !important;">
+          <div class="card-body p-5">
+
+            <p class="lead fw-bold mb-5" style="color: #f37a27;">Purchase Reciept</p>
+
+            <div class="row">
+
+              <div class="col mb-3">
+                <p class="small text-muted mb-1"class="fw-bold">Order No.</p>
+                <p> {{orders.id}}</p>
+              </div>
+            </div>
+
+            <div class="mx-n5 px-5 py-4 w-100" style="background-color: #f2f2f2;">
+              <div class="row">
+                <div class="col-md-4 col-lg-6">
+                  <p class="fw-bold">Phone No.</p>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <p>{{orders.billing_phone}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 col-lg-6">
+                  <p class="fw-bold">Name On Card</p>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <p >{{orders.billing_name_on_card}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 col-lg-6">
+                  <p class="fw-bold">address</p>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <p>{{orders.billing_address}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 col-lg-6">
+                  <p class="fw-bold">Shipping status</p>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <p>{{orders.shipped}}</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+                <p class="lead fw-bold m-2 p-2" style="color: #f37a27;">TOTAL : {{cartTotal}}</p>
+
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-12">
+
+
+              </div>
+            </div>
+
+            <p class="mt-4 pt-2 mb-0">Want any help? <a routerLink="/contact" style="color: #f37a27;">Please contact
+                us</a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

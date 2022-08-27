@@ -1,0 +1,36 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"> Name</th>
+      <th scope="col"> Email</th>
+      <th scope="col"> Province</th>
+      <th scope="col"> City</th>
+      <th scope="col"> Postal Code</th>
+      <th>order_details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of orders; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{item.billing_email}}</td>
+      <td>{{item.billing_name}}</td>
+      <td>{{item.billing_province}}</td>
+      <td>{{item.billing_city}}</td>
+      <td>{{item.billing_postalcode}}</td>
+
+      <td><a id="addLinkBtn_{{item.id}}" class="img_head " ><button id="addItemBtn_{{item.id}}" class="btn btn-dark   " [routerLink]="['/order_details', item.id]">view</button></a>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,48 @@
+<section class="form_header">
+    <div class="container">
+        <div class="layer"></div>
+        <h2>Get In Touch</h2>
+        <p>Want to get in touch? We’d love to hear from you. Here’s how you can reach us…</p>
+    </div>
+</section>
+
+<section class="form_container">
+    <div class="container">
+        <div class="form_items">
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+          <h2>Login Now! <i class="fas fa-user-check "></i></h2>
+          <h6 class="text-center mb-4">Already Have an Acount? <a class="link-secondary"
+                                                                  routerLink="/register">Register</a></h6>
+
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <p class="alert">{{errorMessage}}</p>
+          </div>
+
+          <div *ngIf="displayErrors.length > 0" class="alert alert-danger">
+            <p *ngFor="let error of displayErrors" class="alert">{{error}}</p>
+          </div>
+
+          <label class="form-label" for="email">Email or Phone</label>
+          <input
+            [ngClass]="{'border-danger': loginForm.controls['email'].errors &&  loginForm.controls['email'].touched}"
+            formControlName="email" class="form-control" id="email" placeholder="Email or Phone" type="text">
+          <div *ngIf="loginForm.controls['email'].errors &&  loginForm.controls['email'].touched"
+               class="alert alert-danger" role="alert">
+            <p *ngIf="loginForm.controls['email'].errors?.required">Email or Phone field is required</p>
+          </div>
+
+          <label class="form-label" for="password">Password</label>
+          <input
+            [ngClass]="{'border-danger': loginForm.controls['password'].errors &&  loginForm.controls['password'].touched}"
+            formControlName="password" class="form-control  " id="password" placeholder="password" type="password">
+          <div *ngIf="loginForm.controls['password'].errors &&  loginForm.controls['password'].touched"
+               class="alert alert-danger" role="alert">
+                <p *ngIf="loginForm.controls['password'].errors?.required">Password field is required</p>
+            </div>
+
+            <button class="btn btn-dark" [disabled]="loginForm.invalid" type="submit">Login</button>
+        </form>
+        </div>
+
+    </div>
+</section>

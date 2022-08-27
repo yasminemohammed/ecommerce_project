@@ -1,0 +1,155 @@
+<br>
+<br>
+<br>
+<section id="contact-us" class="contact-us section">
+  <div class="container mx-auto">
+    <div class="contact-head">
+      <div class="row">
+        <div class="col-lg-8 col-12">
+          <div class="form-main">
+            <div class="title">
+              <h4>Get in touch</h4>
+              <h3>Write us a message</h3>
+            </div>
+            <form #f="ngForm"
+                  (ngSubmit)="f.form.valid"
+                  *ngIf="!isSuccessful"
+                  class="form"
+                  name="form"
+                  novalidate>
+              <div class="row">
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label>Your Name<span>*</span></label>
+                    <input #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.errors }" class="form-control"
+                           id="name" maxlength="30"
+                           minlength="2"
+                           name="name" ngModel placeholder="Name" type="text">
+                    <div *ngIf="(name.touched)"
+                         class="alert alert-danger mt-2"> your name is required
+                    </div>
+                    <div *ngIf="(name.invalid)"
+                         class="alert alert-danger mt-2"> your name is invalid
+                    </div>
+
+
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label>Your Subjects<span>*</span></label>
+                    <input #subject="ngModel" [ngClass]="{ 'is-invalid': f.submitted && subject.errors }"
+                           class="form-control"
+                           id="subject"
+                           maxlength="50"
+                           minlength="5" name="subject" name="subject" ng-control="subject"
+                           ngModel placeholder="Subject" type="text">
+                    <div *ngIf="(subject.touched)"
+                         class="alert alert-danger mt-2"> your subject is required
+                    </div>
+                    <div *ngIf="(subject.invalid)"
+                         class="alert alert-danger mt-2"> your subject is invalid
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label for="email">Your email<span>*</span></label>
+                    <input #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+                           class="form-control" id="email" maxlength="50"
+                           minlength="10" name="email" ng-control="email" ngModel
+                           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                           placeholder="example@gmail.com"
+                           type="email"
+                    >
+                    <div *ngIf="(email.touched)"
+                         class="alert alert-danger mt-1"> your email is required
+                    </div>
+                    <div *ngIf="(email.invalid)"
+                         class="alert alert-danger mt-1"> your email is invalid
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="form-group">
+                    <label>Your Phone<span>*</span></label>
+                    <input #phoneNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneNo.errors }"
+                           class="form-control" id="phoneNo" maxlength="11" minlength="11"
+                           name="phoneNo" ng-control="phoneNo" ngModel
+                           placeholder="Ex : 01044444444"
+                           type="tel"
+                    >
+                    <div *ngIf="(phoneNo.touched)"
+                         class="alert alert-danger mt-2"> your phoneNo is required
+                    </div>
+                    <div *ngIf="(phoneNo.invalid)"
+                         class="alert alert-danger mt-2"> your phoneNo is invalid
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group message">
+                    <label>your message<span>*</span></label>
+                    <textarea #message="ngModel" class="form-control" id="message" maxlength="300" minlength="10"
+                              name="message" ng-control="message" ngModel placeholder="Your message goes here">
+                    [ngClass]="{ 'is-invalid': f.submitted && message.errors }"
+
+                  </textarea>
+                    <div *ngIf="(message.touched)"
+                         class="alert alert-danger mt-2"> your message is required
+                    </div>
+                    <div *ngIf="(message.invalid)"
+                         class="alert alert-danger mt-2"> your message is invalid
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group button">
+                    <button (click)="sendEmail(
+                                            name.value,
+                                            email.value,
+                                            phoneNo.value,
+                                            subject.value,
+                                            message.value
+                                            )" class="btn" type="submit">Send Message
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="single-head">
+            <div class="single-info">
+              <i class="fa fa-phone"></i>
+              <h4 class="title">Call us Now:</h4>
+              <ul>
+                <li>+91 9041176818</li>
+                <li>+522 672-452-1120</li>
+              </ul>
+            </div>
+            <div class="single-info">
+              <i class="fa fa-envelope-open"></i>
+              <h4 class="title">Email:</h4>
+              <ul>
+                <li><a href="shop@gmail.com">shop@gmail.com</a></li>
+                <li><a href="shop@hotmail.com">shop@hotmail.com</a></li>
+              </ul>
+            </div>
+            <div class="single-info">
+              <i class="fa fa-location-arrow"></i>
+              <h4 class="title">Our Address:</h4>
+              <ul>
+                <li>KA-62/1, , 45 Grand Central Terminal, New Delhi.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

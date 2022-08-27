@@ -1,0 +1,161 @@
+<section class="form_header">
+  <div class="container">
+    <div class="layer"></div>
+    <h2>Get In Touch</h2>
+    <p>Want to get in touch? We’d love to hear from you. Here’s how you can reach us…</p>
+  </div>
+</section>
+<!-- <button (click)="hello()">button</button> -->
+<!-- <section class="form_container">
+  <div class="container">
+      <div class="form_items">
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+
+          <div *ngIf="displayErrors.length > 0" class="alert alert-danger">
+              <p *ngFor="let error of displayErrors" class="alert">{{error}}</p>
+          </div>
+
+          <h1>{{registerForm.controls['email'].errors?.message}}</h1>
+          <h2>Register Now! <i class="fas fa-user-plus "></i></h2>
+          <h3 class="text-center mb-4">Already Have an Acount? <a class="link-secondary" routerLink="/login">Login</a></h3>
+
+          <label class="form-label"  for="email">Email</label>
+          <input [ngClass]="{'border-danger': registerForm.controls['email'].errors &&  registerForm.controls['email'].touched}" formControlName="email" class="form-control" id="email" placeholder="Email" type="email">
+          <div *ngIf="registerForm.controls['email'].errors &&  registerForm.controls['email'].touched" class="alert alert-danger" role="alert">
+              <p *ngIf="registerForm.controls['email'].errors?.required">Email field is required</p>
+              <p *ngIf="registerForm.controls['email'].errors?.email">Email is not valid</p>
+          </div>
+
+          <label class="form-label"  for="phone">Phone</label>
+          <input [ngClass]="{'border-danger': registerForm.controls['phone'].errors &&  registerForm.controls['phone'].touched}" formControlName="phone" class="form-control" id="phone" placeholder="Phone" type="phone">
+          <div *ngIf="registerForm.controls['phone'].errors &&   registerForm.controls['phone'].touched" class="alert alert-danger" role="alert">
+              <p *ngIf="registerForm.controls['phone'].errors?.required">Phone field is required</p>
+              <p *ngIf="registerForm.controls['phone'].errors?.pattern">Phone is not valid</p>
+          </div>
+
+
+          <label class="form-label" for="password">Password</label>
+          <input  [ngClass]="{'border-danger': registerForm.controls['password'].errors &&  registerForm.controls['password'].touched}" formControlName="password" class="form-control  " id="password" placeholder="password" type="password">
+          <div *ngIf="registerForm.controls['password'].errors &&  registerForm.controls['password'].touched" class="alert alert-danger" role="alert">
+              <p *ngIf="registerForm.controls['password'].errors?.required">Password field is required</p>
+              <p *ngIf="registerForm.controls['password'].errors?.pattern">Password is not valid</p>
+          </div>
+
+          <label class="form-label" for="password_confirmation">Confirm Password</label>
+          <input [ngClass]="{'border-danger': registerForm.controls['password_confirmation'].errors &&  registerForm.controls['password_confirmation'].touched}" formControlName="password_confirmation" class="form-control" id="password_confirmation" placeholder="Confirm password" type="password">
+          <div *ngIf="registerForm.controls['password_confirmation'].errors &&   registerForm.controls['password_confirmation'].touched" class="alert alert-danger" role="alert">
+              <p *ngIf="registerForm.controls['password_confirmation'].errors?.required">Password_confirmation field is required</p>
+              <p *ngIf="registerForm.controls['password_confirmation'].errors?.pattern">Password_confirmation is not valid</p>
+          </div>
+
+          <label class="form-label" for="role">Are You</label>
+          <div class="role pl-2">
+              <div class="form-check" >
+                  <input formControlName="role" value="seller" class="form-check-input" type="radio" name="role" id="seller">
+                  <label class="form-check-label" for="seller">
+                      Seller
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input checked  formControlName="role" value="customer" class="form-check-input" type="radio" name="role" id="customer">
+                  <label class="form-check-label" for="customer" >
+                      Customer
+                  </label>
+                  </div>
+          </div>
+          <div *ngIf="registerForm.controls['role'].errors &&   registerForm.controls['role'].touched" class="alert alert-danger" role="alert">
+              <p *ngIf="registerForm.controls['role'].errors?.required">You have to choose one role option </p>
+          </div>
+
+
+          <button class="btn btn-dark" [disabled]="registerForm.invalid" type="submit">Register</button>
+      </form>
+      </div>
+
+  </div>
+</section> -->
+
+<div class="container-fluid">
+  <div class="row  justify-content-center">
+    <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+      <div class="card    pt-4 pb-0 mt-3 mb-3">
+        <h4 class="fw-bold" id="heading">Sign Up Your User Account</h4>
+        <form (ngSubmit)="submitForm(registerForm)" [formGroup]="registerForm" id="msform">
+
+          <!-- fieldsets -->
+          <fieldset>
+            <div class="form-card">
+              <div *ngIf="displayErrors.length > 0" class="alert alert-danger">
+                <p *ngFor="let error of displayErrors" class="alert">{{error}}</p>
+              </div>
+
+              <label class="form-label fieldlabels" for="full_name">Full Name</label>
+              <input
+                class="form-control"
+                formControlName="full_name" id="full_name"
+                ngClass="{'border-danger': registerForm.controls['full_name'].errors &&  registerForm.controls['full_name'].touched}"
+                placeholder="Full name" type="text">
+              <div *ngIf="registerForm.controls['full_name'].errors &&  registerForm.controls['full_name'].touched"
+                   class="alert alert-danger" role="alert">
+                <p *ngIf="registerForm.controls['full_name'].errors?.required">full name field is required</p>
+              </div>
+
+              <label class="form-label fieldlabels" for="email">Email</label>
+              <input
+                class="form-control"
+                formControlName="email" id="email" inputmode="email"
+                ngClass="{'border-danger': registerForm.controls['email'].errors &&  registerForm.controls['email'].touched}"
+                placeholder="Email"
+                type="email">
+              <div *ngIf="registerForm.controls['email'].errors &&  registerForm.controls['email'].touched"
+                   class="alert alert-danger" role="alert">
+                <p *ngIf="registerForm.controls['email'].errors?.required">Email field is required</p>
+                <p *ngIf="registerForm.controls['email'].errors?.email">Email is not valid</p>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label fieldlabels" for="password">Password</label>
+                  <input
+                    class="form-control  "
+                    formControlName="password" id="password"
+                    ngClass="{'border-danger': registerForm.controls['password'].errors &&  registerForm.controls['password'].touched}"
+                    placeholder="password"
+                    type="password">
+                  <div *ngIf="registerForm.controls['password'].errors &&  registerForm.controls['password'].touched"
+                       class="alert alert-danger" role="alert">
+                    <p *ngIf="registerForm.controls['password'].errors?.required">Password field is required</p>
+                    <p *ngIf="registerForm.controls['password'].errors?.pattern">Password is not valid</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fieldlabels" for="password_confirmation">Password Confirm </label>
+                  <input
+                    class="form-control"
+                    formControlName="password_confirmation" id="password_confirmation"
+                    ngClass="{'border-danger': registerForm.controls['password_confirmation'].errors &&  registerForm.controls['password_confirmation'].touched}"
+                    placeholder="Password Confirm" type="password">
+                  <div
+                    *ngIf="registerForm.controls['password_confirmation'].errors &&   registerForm.controls['password_confirmation'].touched"
+                    class="alert alert-danger" role="alert">
+                    <p *ngIf="registerForm.controls['password_confirmation'].errors?.required">Password confirm is
+                      required</p>
+                    <p *ngIf="registerForm.controls['password_confirmation'].errors?.pattern">Password confirm is not
+                      valid</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <button [disabled]="registerForm.invalid" class="btn btn-dark  action-button " id="submitBtn" type="submit">
+              Register
+            </button>
+
+          </fieldset>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

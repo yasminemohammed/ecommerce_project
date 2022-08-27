@@ -1,0 +1,197 @@
+<section class="cart mt-5">
+  <div class="container" style="margin-top: 5rem">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="container-fluid">
+          <div class="row  justify-content-center">
+            <div class=" text-center p-0 mt-3 mb-2">
+              <div class="card    pt-4 pb-0 mt-3 mb-3">
+                <h4 class="fw-bold" id="heading">Payment Details</h4>
+                <form (ngSubmit)="submitForm(registerForm)" [formGroup]="registerForm" id="msform">
+
+                  <fieldset>
+                    <div class="form-card">
+
+                      <div id="card-element">
+                        <!-- Elements will create input elements here -->
+                      </div>
+
+                      <!-- We'll put the error messages in this element -->
+                      <div id="card-errors" role="alert"></div>
+
+                      <label class="form-label fieldlabels" for="nameOnCard">Name on card</label>
+                      <input
+                        class="form-control"
+                        formControlName="nameOnCard" id="nameOnCard"
+                        ngClass="{'border-danger': registerForm.controls['nameOnCard'].errors &&  registerForm.controls['nameOnCard'].touched}"
+                        placeholder="Name On Card"
+                        type="text">
+                      <div
+                        *ngIf="registerForm.controls['nameOnCard'].errors &&  registerForm.controls['nameOnCard'].touched"
+                        class="alert alert-danger" role="alert">
+                        <p *ngIf="registerForm.controls['nameOnCard'].errors?.required">Name On Card field is
+                          required</p>
+                      </div>
+                    </div>
+
+                    <div class="form-card">
+                      <div *ngIf="displayErrors.length > 0" class="alert alert-danger">
+                        <p *ngFor="let error of displayErrors" class="alert">{{error}}</p>
+                      </div>
+
+                      <label class="form-label fieldlabels" for="email">Email</label>
+                      <input
+                        class="form-control"
+                        formControlName="email" id="email" inputmode="email"
+                        ngClass="{'border-danger': registerForm.controls['email'].errors &&  registerForm.controls['email'].touched}"
+                        placeholder="Email"
+                        type="email">
+                      <div *ngIf="registerForm.controls['email'].errors &&  registerForm.controls['email'].touched"
+                           class="alert alert-danger" role="alert">
+                        <p *ngIf="registerForm.controls['email'].errors?.required">Email field is required</p>
+                        <p *ngIf="registerForm.controls['email'].errors?.email">Email is not valid</p>
+                      </div>
+
+                      <label class="form-label fieldlabels" for="phone">Phone</label>
+                      <input
+                        class="form-control"
+                        formControlName="phone" id="phone" inputmode="tel"
+                        ngClass="{'border-danger': registerForm.controls['phone'].errors &&  registerForm.controls['phone'].touched}"
+                        placeholder="Phone"
+                        type="phone">
+                      <div *ngIf="registerForm.controls['phone'].errors &&   registerForm.controls['phone'].touched"
+                           class="alert alert-danger" role="alert">
+                        <p *ngIf="registerForm.controls['phone'].errors?.required">Phone field is required</p>
+                        <p *ngIf="registerForm.controls['phone'].errors?.pattern">Phone is not valid</p>
+                      </div>
+
+                      <label class="form-label fieldlabels" for="Full_Name">Full Name</label>
+                      <input
+                        class="form-control"
+                        formControlName="name" id="Full_Name"
+                        ngClass="{'border-danger': registerForm.controls['name'].errors &&  registerForm.controls['name'].touched}"
+                        placeholder="Full name"
+                        type="text">
+                      <div
+                        *ngIf="registerForm.controls['name'].errors &&  registerForm.controls['name'].touched"
+                        class="alert alert-danger" role="alert">
+                        <p *ngIf="registerForm.controls['name'].errors?.required">full name field is
+                          required</p>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label class="form-label fieldlabels" for="Province">Province</label>
+                          <input
+                            class="form-control"
+                            formControlName="province" id="Province"
+                            ngClass="{'border-danger': registerForm.controls['province'].errors &&  registerForm.controls['province'].touched}"
+                            placeholder="Province"
+                            type="text">
+                          <div
+                            *ngIf="registerForm.controls['province'].errors &&   registerForm.controls['province'].touched"
+                            class="alert alert-danger" role="alert">
+                            <p *ngIf="registerForm.controls['province'].errors?.required">Province field is
+                              required</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label fieldlabels" for="City">City</label>
+                          <input
+                            class="form-control  "
+                            formControlName="city" id="city"
+                            ngClass="{'border-danger': registerForm.controls['city'].errors &&  registerForm.controls['city'].touched}"
+                            placeholder="City" type="text">
+                          <div
+                            *ngIf="registerForm.controls['city'].errors &&  registerForm.controls['city'].touched"
+                            class="alert alert-danger" role="alert">
+                            <p *ngIf="registerForm.controls['city'].errors?.required">City field is required</p>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label class="form-label fieldlabels" for="Postal_code">Postal Code</label>
+                          <input
+                            class="form-control"
+                            formControlName="postalCode" id="Postal_code" inputmode="numeric"
+                            ngClass="{'border-danger': registerForm.controls['postalCode'].errors &&  registerForm.controls['postalCode'].touched}"
+                            placeholder="postalCode" type="text">
+                          <div
+                            *ngIf="registerForm.controls['postalCode'].errors &&   registerForm.controls['postalCode'].touched"
+                            class="alert alert-danger" role="alert">
+                            <p *ngIf="registerForm.controls['postalCode'].errors?.required">postal code field is
+                              required</p>
+                            <p *ngIf="registerForm.controls['postalCode'].errors.minlength"> required code number
+                              is 5 </p>
+                            <p *ngIf="registerForm.controls['postalCode'].errors.maxlength"> required code number
+                              is 5 </p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label fieldlabels" for="Address">Address</label>
+                          <input
+                            class="form-control"
+                            formControlName="address" id="Address"
+                            ngClass="{'border-danger': registerForm.controls['address'].errors &&  registerForm.controls['address'].touched}"
+                            placeholder="Address"
+                            type="text">
+                          <div
+                            *ngIf="registerForm.controls['address'].errors &&   registerForm.controls['address'].touched"
+                            class="alert alert-danger" role="alert">
+                            <p *ngIf="registerForm.controls['address'].errors?.required">Address field is
+                              required</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <button [disabled]="registerForm.invalid || cartData == null || cartData.length == 0"
+                            class="btn btn-dark  action-button " id="submitBtn"
+                            type="submit">Complete Order
+                    </button>
+
+                  </fieldset>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- cart Detailss -->
+      <div class="col-md-4">
+        <div class="cart_totals">
+          <h4>Payment Details</h4>
+          <div class="totalDetails subtotal">
+            <h6>Subtotal:</h6>
+            <h6>${{cartSubTotal}} </h6>
+          </div>
+          <hr>
+          <div class="totalDetails taxs">
+            <h6>Taxs:</h6>
+            <h6>${{cartTax.toFixed(2)}}</h6>
+          </div>
+          <hr>
+          <div class="totalDetails taxs">
+            <h6>Discount:</h6>
+            <h6>${{cartDiscount.toFixed(2)}}</h6>
+          </div>
+          <hr>
+          <div class="totalDetails total">
+            <h6>Total:</h6>
+            <h6>${{cartTotal}} </h6>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

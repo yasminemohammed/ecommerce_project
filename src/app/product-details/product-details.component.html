@@ -1,0 +1,145 @@
+<section class="product_header">
+    <div class="container">
+        <h2>Mobile Phone</h2>
+        <p>Home / category name / product name</p>
+    </div>
+</section>
+
+<section class="product_card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product_img">
+
+                    <div  class="main_img">
+
+                        <lib-ngx-image-zoom class="img w-50"
+                        [thumbImage]=productDetails?.image
+                        [fullImage]=productDetails?.image
+                        [magnification]="1.5"
+                        [enableScrollZoom]="true"
+                        [lensWidth]="100"
+                        [circularLens]="true"
+                    ></lib-ngx-image-zoom>
+                    </div>
+                    <div class="product_imgs">
+                        <div class="row">
+                            <div *ngFor="let img of productDetails?.images" [ngClass]="productDetails?.images.length > 4 ? 'col-md-2' : 'col-md-3' "  >
+                                <img (click)="slideImgs($event.target)"  id="item_img" class="img-fluid m-auto" [src]="img.path" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="product_details">
+                    <h1>{{productDetails?.name}}</h1>
+                    <div class="reviews pb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                    <span>{{productDetails?.rating}}</span>
+
+                    </div>
+                    <div class="price">${{productDetails?.price}}<span class="fw-bolder"> ${{productDetails?.final_price}}</span></div>
+                    <p>{{productDetails?.description}} </p>
+
+                    <div class="cartBtn py-4">
+                        <button (click)="addItemToCart(productDetails?.id)" class="btn btn-dark w-100">Add Cart <i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+      <h3 class="text-info text-center">Related Products</h3>
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="slide">
+                            <img [src]="productDetails?.relatedProducts[0].image" class="m-5">
+                            <h5> {{productDetails?.relatedProducts[0].name}}</h5>
+                          </div>
+                    </div>
+                </div>
+          </ng-template>
+      </owl-carousel-o>
+    </div>
+
+</section>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+<h3 class="text-info text-center">REVIEWS</h3>
+<div class="row row-cols-1 row-cols-md-3 g-4 m-3">
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title text-info">{{productDetails?.reviews[0]?.user.name}}</h5>
+        <p class="card-text">{{productDetails?.reviews[0]?.description}}</p>
+        <p class="card-text"> Rating: {{productDetails?.reviews[0]?.rating}}</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title text-info">{{productDetails?.reviews[1]?.user.name}}</h5>
+        <p class="card-text">{{productDetails?.reviews[1]?.description}}</p>
+        <p class="card-text"> Rating: {{productDetails?.reviews[1]?.rating}}</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title text-info">{{productDetails?.reviews[2]?.user.name}}</h5>
+        <p class="card-text">{{productDetails?.reviews[2]?.description}}</p>
+        <p class="card-text"> Rating: {{productDetails?.reviews[2]?.rating}}</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title text-info">{{productDetails?.reviews[3]?.user.name}}</h5>
+        <p class="card-text">{{productDetails?.reviews[3]?.description}}</p>
+        <p class="card-text"> Rating: {{productDetails?.reviews[3]?.rating}}</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title text-info">{{productDetails?.reviews[4]?.user.name}}</h5>
+        <p class="card-text">{{productDetails?.reviews[4]?.description}}</p>
+        <p class="card-text"> Rating: {{productDetails?.reviews[4]?.rating}}</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title text-info">{{productDetails?.reviews[5]?.user.name}}</h5>
+        <p class="card-text">{{productDetails?.reviews[5]?.description}}</p>
+        <p class="card-text"> Rating: {{productDetails?.reviews[5]?.rating}}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
