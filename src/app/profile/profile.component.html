@@ -1,25 +1,134 @@
-<br>
-<br>
-<br>
-<br>
-<div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
-    <h3>
-      <strong>{{ currentUser?.data?.user.name}}</strong> Profile
-    </h3>
-  </header>
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser?.data?.user.email}}
-  </p>
+<section class="py-5 my-5">
+    <div class="container">
+        <h1 class="my-4 text-center fw-bold">Account Settings</h1>
+        <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+            <div class="profile-tab-nav border-right">
+                <div class="p-4">
+                    <div class="img-circle text-center mb-3">
+                        <img src="../../assets/user.png" alt="Image"  class="shadow img-circle">
+                    </div>
+                    <h4 class="text-center">{{userData?.data.user.name}}</h4>
+                </div>
+                <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active bg-secondary text-white" id="account-tab" data-toggle="pill"  role="tab" aria-controls="account" aria-selected="true">
+                        <i class="fa fa-home text-center mr-1"></i>
+                        Account
+                    </a>
+                     <a  class="nav-link" id="password-tab" data-toggle="pill"  role="tab" aria-controls="password" aria-selected="false">
+                        <i class="fa fa-key text-center mr-1"></i>
+                        Password
+                    </a>
 
-  <p>
-    <strong>Roles:</strong>
-    {{ currentUser?.data?.user?.roles[0].name}}
-  </p>
+                    <!-- <a class="nav-link" id="security-tab" data-toggle="pill"  role="tab" aria-controls="security" aria-selected="false">
+                        <i class="fa fa-user text-center mr-1"></i>
+                        Compelete Registeration
+                    </a>  -->
 
-</div>
+                </div>
+            </div>
+            <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                <div class="tab-pane fade show active " id="account">
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
+                    <div *ngIf="profileErrors.length > 0" class="alert alert-danger">
+                        <p *ngFor="let error of profileErrors" class="alert">{{error}}</p>
+                    </div>
+
+                    <div *ngIf="profileSuccess" id="success-alert" class="alert alert-success" role="alert">
+                        <p>You Have Updated The Profile Successfully</p>
+                    </div>
+
+
+                    <h3 class="mb-4">Account Settings</h3>
+                    <form [formGroup]="profileForm" (ngSubmit)="profileSubmit(profileForm)" >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                  <label class="form-label"> name</label>
+                                  <input formControlName="name" type="text" class="form-control" [(ngModel)]="name">
+                                <div *ngIf="profileForm.controls['name'].errors &&  profileForm.controls['name'].touched" class="alert alert-danger mt-1" role="alert">
+                                    <p *ngIf="profileForm.controls['name'].errors?.required">Name field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                  <label class="form-label">email</label>
+                                  <input formControlName="email" type="text" class="form-control" [(ngModel)]="userData.data.useremail">
+                                  <div *ngIf="profileForm.controls['email'].errors &&  profileForm.controls['email'].touched" class="alert alert-danger mt-1" role="alert">
+                                    <p *ngIf="profileForm.controls['email'].errors?.required">email field is required</p>
+                                    <p *ngIf="profileForm.controls['email'].errors.minlength"> required code number is 5 </p>
+                                    <p *ngIf="profileForm.controls['email'].errors.maxlength"> required code number is 5 </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <button class="btn btn-primary py-2 " [disabled]="profileForm.invalid" type="submit" >Update</button>
+                    </div>
+                </form>
+
+                </div>
+
+
+                <div class="tab-pane fade " id="password" role="tabpanel" aria-labelledby="password-tab">
+
+                    <div *ngIf="passwordSuccess" id="success-alert" class="alert alert-success" role="alert">
+                        <p>Your Password Has Updated Successfully</p>
+                      </div>
+
+                    <div *ngIf="passwordErrors.length > 0" class="alert alert-danger">
+                        <p *ngFor="let error of passwordErrors">{{error}}</p>
+                    </div>
+
+
+                    <h3 class="mb-4 fw-bold">Password Settings</h3>
+
+                    <form [formGroup]="passwordForm" (ngSubmit)="passwordUpdate(passwordForm)" >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                  <label class="form-label">Old password</label>
+                                  <input formControlName="password" type="password" class="form-control">
+                                  <div *ngIf="passwordForm.controls['password'].errors &&  passwordForm.controls['password'].touched" class="alert alert-danger mt-1" role="alert">
+                                    <p *ngIf="passwordForm.controls['password'].errors?.required">Old password field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                  <label class="form-label">New password</label>
+                                  <input formControlName="new_password" type="password" class="form-control">
+                                  <div *ngIf="passwordForm.controls['new_password'].errors &&  passwordForm.controls['new_password'].touched" class="alert alert-danger mt-1" role="alert">
+                                    <p *ngIf="passwordForm.controls['new_password'].errors?.required">New password field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                  <label class="form-label">Confirm new password</label>
+                                  <input formControlName="new_password_confirmation" type="password" class="form-control">
+                                  <div *ngIf="passwordForm.controls['new_password_confirmation'].errors &&  passwordForm.controls['new_password_confirmation'].touched" class="alert alert-danger mt-1" role="alert">
+                                    <p *ngIf="passwordForm.controls['new_password_confirmation'].errors?.required">Confirm new password field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit" [disabled]="passwordForm.invalid">Update</button>
+                        <!-- <button class="btn btn-light">Cancel</button> -->
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

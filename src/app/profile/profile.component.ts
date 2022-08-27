@@ -1,5 +1,10 @@
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { FormControl,FormGroup,Validators } from '@angular/forms';
+
+declare let $:any;
+
 
 @Component({
   selector: 'app-profile',
@@ -7,13 +12,152 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  currentUser: any;
 
-  constructor(private TokenStorageService: TokenStorageService) { }
+  profileErrors:string[]=[];
+  passwordErrors:string[]=[];
+  fileImg:any = null;
 
-  ngOnInit(): void {
-    this.currentUser = this.TokenStorageService.getUser();
-    console.log(this.currentUser);
+  passwordSuccess:boolean = false;
+  profileSuccess:boolean = false;
+
+  userData:any
+  userName:any
+  name: any;
+  email: any;
+  constructor(private _AuthService:AuthService, private _Router:Router)
+  {
+    this._AuthService.currentUserData.subscribe((currentData:any)=>
+    {
+    if (currentData)
+      {
+        if (localStorage.getItem('updatedData')) // updated profile data
+        {
+          this.userData = currentData;
+          this.name = this.userData.name;
+          this.email = this.userData.email;
+
+          return;
+        }
+        this.userData = currentData.user;
+        this.name = this.userData?.data.user.name;
+      }
+      console.log(this.userData);
+
+    })
+  }
+
+  passwordForm:FormGroup = new FormGroup({
+    password:new FormControl(null, [Validators.required, Validators.pattern("^[a-zA-Z0-9]{3,10}$")]),
+    new_password:new FormControl(null, [Validators.required, Validators.pattern("^[a-zA-Z0-9]{3,10}$")]),
+    new_password_confirmation :new FormControl(null, [Validators.required, Validators.pattern("^[a-zA-Z0-9]{3,10}$")]),
+  })
+
+  passwordUpdate(passwordForm:any)
+  {
+    console.log(passwordForm.value);
+
+    this._AuthService.updatePassword(passwordForm.password,passwordForm. new_password_confirmation).subscribe(
+      (response)=>
+      {
+
+        if(response.message)
+        {
+          this.passwordSuccess = true;
+        }
+
+      },
+      (errors)=>
+      {
+        if (errors.status == 422)
+        {
+          let errorsArray = errors.error.errors;
+          this.passwordErrors = [];
+          for (var property in errorsArray)
+          {
+            this.passwordErrors.push(errorsArray[property][0]);
+          }
+        }
+
+      })
+  }
+
+  // profileeeeeeeee updateddddddd
+
+  profileForm:FormGroup = new FormGroup({
+
+    email:new FormControl(null, [Validators.required , Validators.email]),
+    name:new FormControl(null, [Validators.required]),
+
+
+  })
+
+
+  profileSubmit(profileForm:any)
+  {
+    let userData = profileForm.value
+    let  formData = new FormData();
+    console.log(userData);
+    formData.append('email', userData.email);
+    formData.append('name', userData.name);
+
+
+
+    this._AuthService.updateProfile(this.email,this.name).subscribe(
+    (response)=>
+    {
+
+      if (response.message)
+      {
+        this.name = response.data.name;
+        this.userData = response.data;
+        localStorage.setItem('auth-user', JSON.stringify(response.data));
+        this.profileErrors = [];
+        this.profileSuccess = true
+      }
+    },
+    (errors)=>
+    {
+      console.log(errors);
+
+      let errorsArray = errors.error.errors;
+      this.profileErrors = [];
+      for (var property in errorsArray)
+      {
+        this.profileErrors.push(errorsArray[property][0]);
+      }
+    })
 
   }
+  ngOnInit(): void {
+
+    $('#password-tab').click(function()
+    {
+      $("#account").removeClass('show active');
+      $("#password").addClass('show active');
+      $('#password-tab').addClass('active bg-secondary text-white')
+      $('#account-tab').removeClass('active bg-secondary text-white')
+
+    })
+
+    $('#account-tab').click(function()
+    {
+      $("#account").addClass('show active');
+      $("#password").removeClass('show active');
+      $('#account-tab').addClass('active bg-secondary text-white')
+      $('#password-tab').removeClass('active bg-secondary text-white')
+    })
+
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+      $("#success-alert").slideUp(500);
+    });
+
+    window.setTimeout(function() {
+      $("#success-alert").fadeTo(500, 0).slideUp(1000,function()
+      {
+        $("#success-alert").remove()
+      })
+  }, 6000);
+
+  }
+
 }

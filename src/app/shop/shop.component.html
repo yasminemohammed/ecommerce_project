@@ -99,7 +99,7 @@
                         </div>
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                            <li class="page-item " [ngClass]="{'disabled': currentPage <= 1}"   (click)="prevPagination()" ><a  class="page-link" >Prev</a></li>
+                            <li class="page-item " [ngClass]="{'disabled': currentPage <= 1}"  (click)="prevPagination()" ><a  class="page-link" >Prev</a></li>
 
                             <li *ngFor="let item of page_items" class="page-item" (click)="getByPage(item.label)" [ngClass]="{'active': item.label == currentPage}" >
                                 <a class="page-link" >{{item.label}} </a>

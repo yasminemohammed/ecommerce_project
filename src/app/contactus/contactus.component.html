@@ -25,7 +25,7 @@
                      maxlength="30" minlength="2"
                     [ngClass]="{ 'is-invalid': f.submitted && name.errors }"
                     ngModel name="name" #name="ngModel" placeholder="Name">
-                    <div *ngIf="(name.touched)"
+                    <div *ngIf="(name.touched || name.dirty)"
                     class="alert alert-danger mt-2"> your name is required
                  </div>
                  <div *ngIf="(name.invalid)"
@@ -43,7 +43,7 @@
                      maxlength="50"
                     minlength="5" class="form-control"  id="subject" type="text"
                     ngModel name="subject" placeholder="Subject">
-                    <div *ngIf="(subject.touched)"
+                    <div *ngIf="(subject.touched || subject.dirty)"
                     class="alert alert-danger mt-2"> your subject is required
                  </div>
                  <div *ngIf="(subject.invalid)"
@@ -60,7 +60,7 @@
                      name="email"
                       [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
                       >
-                      <div *ngIf="(email.touched)"
+                      <div *ngIf="(email.touched || email.dirty)"
                       class="alert alert-danger mt-1"> your email is required
                    </div>
                    <div *ngIf="(email.invalid)"
@@ -76,10 +76,10 @@
                     placeholder="Ex : 01044444444"
                     [ngClass]="{ 'is-invalid': f.submitted && phoneNo.errors }"
                     >
-                    <div *ngIf="(phoneNo.touched)"
+                    <div *ngIf="(phoneNo.touched || phoneNo.dirty)"
                     class="alert alert-danger mt-2"> your phoneNo is required
                  </div>
-                 <div *ngIf="(phoneNo.invalid)"
+                 <div *ngIf="(phoneNo.invalid )"
                  class="alert alert-danger mt-2"> your phoneNo is invalid
               </div>
                   </div>
@@ -92,7 +92,7 @@
                     [ngClass]="{ 'is-invalid': f.submitted && message.errors }"
 
                   </textarea>
-                <div *ngIf="(message.touched)"
+                <div *ngIf="(message.touched || message.dirty)"
                 class="alert alert-danger mt-2"> your message is required
              </div>
              <div *ngIf="(message.invalid)"

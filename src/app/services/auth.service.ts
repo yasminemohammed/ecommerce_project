@@ -7,7 +7,10 @@ import jwtDecode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-
+   token = window.localStorage.getItem('auth-token');
+   httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' ,'Accept': 'application/json' ,'Authorization':`Bearer  ${this.token}`})
+  };
   baseURL:any = 'http://localhost:8000/api/v1/';
   currentUserData:any = new BehaviorSubject(null);
   userRole:string = '';
@@ -28,15 +31,15 @@ export class AuthService {
 
 
 
-  updateProfile(profileData:any):Observable<any>
+  updateProfile(email:any,name:any):Observable<any>
   {
 
-    return this._HttpClient.post(this.baseURL+'profile', profileData, {headers:this.headers.getValue()});
+    return this._HttpClient.put(this.baseURL+'/user/info', {email,name}, this.httpOptions);
   }
 
-  updatePassword(passwordData:any):Observable<any>
+  updatePassword(password:any,password_confirm:any):Observable<any>
   {
-    return this._HttpClient.post(this.baseURL+'profile/change-password', passwordData, {headers:this.headers.getValue()});
+    return this._HttpClient.put(this.baseURL+'/user/password', {password,password_confirm}, this.httpOptions);
   }
 
 
